@@ -1,0 +1,17 @@
+{
+  "name": "urban-vogue-shopify",
+  "version": "1.0.0",
+  "description": "Premium Streetwear Shopify Store Mockup - Urban Vogue",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server . -p 8082"
+  },
+  "keywords": [
+    "shopify",
+    "streetwear",
+    "cro",
+    "storefront"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}
