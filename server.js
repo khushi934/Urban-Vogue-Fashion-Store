@@ -132,7 +132,7 @@ function seedProducts() {
                 price: 1499,
                 comparePrice: 2199,
                 category: "Men",
-                image: "assets/mens_graphic_tee.png",
+                image: "./assets/mens_graphic_tee.png",
                 badge: "BEST SELLER",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -162,7 +162,7 @@ function seedProducts() {
                 price: 3499,
                 comparePrice: 4999,
                 category: "Men",
-                image: "assets/mens_oversized_hoodie.png",
+                image: "./assets/mens_oversized_hoodie.png",
                 badge: "MUST HAVE",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -192,7 +192,7 @@ function seedProducts() {
                 price: 1499,
                 comparePrice: 1999,
                 category: "Women",
-                image: "assets/womens_fashion_tee.png",
+                image: "./assets/womens_fashion_tee.png",
                 badge: "ESSENTIALS",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -222,7 +222,7 @@ function seedProducts() {
                 price: 2999,
                 comparePrice: 4499,
                 category: "Women",
-                image: "assets/womens_coord_set.png",
+                image: "./assets/womens_coord_set.png",
                 badge: "LIMIT RUN",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -252,7 +252,7 @@ function seedProducts() {
                 price: 2499,
                 comparePrice: 3499,
                 category: "Women",
-                image: "assets/womens_sweatshirt.png",
+                image: "./assets/womens_sweatshirt.png",
                 badge: "SALE",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -282,7 +282,7 @@ function seedProducts() {
                 price: 899,
                 comparePrice: 1299,
                 category: "Kids",
-                image: "assets/kids_printed_tee.png",
+                image: "./assets/kids_printed_tee.png",
                 badge: "KIDS PLAY",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -312,7 +312,7 @@ function seedProducts() {
                 price: 1799,
                 comparePrice: 2499,
                 category: "Kids",
-                image: "assets/kids_casual_hoodie.png",
+                image: "./assets/kids_casual_hoodie.png",
                 badge: "MINI STYLE",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -342,7 +342,7 @@ function seedProducts() {
                 price: 1999,
                 comparePrice: 2999,
                 category: "Kids",
-                image: "assets/kids_matching_set.png",
+                image: "./assets/kids_matching_set.png",
                 badge: "COMBO SAVE",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -372,7 +372,7 @@ function seedProducts() {
                 price: 4999,
                 comparePrice: 6999,
                 category: "Women",
-                image: "assets/womens_silk_saree.png",
+                image: "./assets/womens_silk_saree.png",
                 badge: "EXCLUSIVE",
                 sizes: ["Free Size"],
                 colors: [
@@ -402,7 +402,7 @@ function seedProducts() {
                 price: 1899,
                 comparePrice: 2799,
                 category: "Women",
-                image: "assets/womens_linen_kurti.png",
+                image: "./assets/womens_linen_kurti.png",
                 badge: "NEW DROP",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -432,7 +432,7 @@ function seedProducts() {
                 price: 3999,
                 comparePrice: 5499,
                 category: "Men",
-                image: "assets/mens_shirt_pant.png",
+                image: "./assets/mens_shirt_pant.png",
                 badge: "ESSENTIALS",
                 sizes: ["S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -462,7 +462,7 @@ function seedProducts() {
                 price: 8999,
                 comparePrice: 12999,
                 category: "Women",
-                image: "assets/womens_velvet_lehnga.png",
+                image: "./assets/womens_velvet_lehnga.png",
                 badge: "LUXURY DROP",
                 sizes: ["S", "M", "L", "XL"],
                 colors: [
@@ -492,7 +492,7 @@ function seedProducts() {
                 price: 1999,
                 comparePrice: 2999,
                 category: "Men",
-                image: "assets/mens_linen_shirt.png",
+                image: "./assets/mens_linen_shirt.png",
                 badge: "SUMMER CUT",
                 sizes: ["S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -522,7 +522,7 @@ function seedProducts() {
                 price: 2499,
                 comparePrice: 3499,
                 category: "Men",
-                image: "assets/mens_cargo_pant.png",
+                image: "./assets/mens_cargo_pant.png",
                 badge: "STREETWEAR",
                 sizes: ["S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -551,7 +551,7 @@ function seedProducts() {
                 price: 2299,
                 comparePrice: 3199,
                 category: "Men",
-                image: "assets/mens_chino_trouser.png",
+                image: "./assets/mens_chino_trouser.png",
                 badge: "PREMIUM",
                 sizes: ["S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -580,7 +580,7 @@ function seedProducts() {
                 price: 3999,
                 comparePrice: 5499,
                 category: "Women",
-                image: "assets/womens_organza_saree.png",
+                image: "./assets/womens_organza_saree.png",
                 badge: "EXCLUSIVE",
                 sizes: ["Free Size"],
                 colors: [
@@ -609,7 +609,7 @@ function seedProducts() {
                 price: 1499,
                 comparePrice: 2199,
                 category: "Women",
-                image: "assets/womens_block_kurti.png",
+                image: "./assets/womens_block_kurti.png",
                 badge: "NEW DROP",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -639,7 +639,7 @@ function seedProducts() {
                 price: 7999,
                 comparePrice: 10999,
                 category: "Women",
-                image: "assets/womens_georgette_lehnga.png",
+                image: "./assets/womens_georgette_lehnga.png",
                 badge: "LUXURY DROP",
                 sizes: ["S", "M", "L", "XL"],
                 colors: [
@@ -669,7 +669,7 @@ function seedProducts() {
                 price: 1299,
                 comparePrice: 1799,
                 category: "Kids",
-                image: "assets/kids_summer_frock.png",
+                image: "./assets/kids_summer_frock.png",
                 badge: "COZY FIT",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -698,7 +698,7 @@ function seedProducts() {
                 price: 1799,
                 comparePrice: 2499,
                 category: "Kids",
-                image: "assets/kids_denim_set.png",
+                image: "./assets/kids_denim_set.png",
                 badge: "MINI DROP",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
@@ -727,7 +727,7 @@ function seedProducts() {
                 price: 1499,
                 comparePrice: 1999,
                 category: "Kids",
-                image: "assets/kids_fleece_coord.png",
+                image: "./assets/kids_fleece_coord.png",
                 badge: "DAILY PLAY",
                 sizes: ["XS", "S", "M", "L", "XL", "XXL"],
                 colors: [
