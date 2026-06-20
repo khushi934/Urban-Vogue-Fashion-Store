@@ -696,7 +696,7 @@ async function loadProductsFromAPI() {
         ];
     }
 }
-}
+
 
 
 // Products come pre-processed from the database with benefits and features already set.
