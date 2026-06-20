@@ -70,6 +70,9 @@
 
             <!-- Action Icons -->
             <div class="header-icons">
+                <button class="header-icon-btn" id="auth-toggle-btn" aria-label="Open Account">
+                    <i class="fa-regular fa-user"></i>
+                </button>
                 <button class="header-icon-btn" id="search-toggle-btn" aria-label="Open Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -486,6 +489,65 @@
                 <div class="success-order-num" id="success-order-id">ORDER #UV-289410</div>
                 <p style="color:var(--color-text-muted); font-size:0.95rem; margin-bottom:32px; max-width:400px;">Thank you for shopping with Urban Vogue. A confirmation email and tracking link will be sent to your inbox shortly.</p>
                 <button class="btn btn-primary" id="success-home-btn">Continue Shopping</button>
+            </div>
+        </div>
+    </div> <!-- CLOSED checkout-modal -->
+
+    <!-- ==========================================================================
+         AUTH MODAL (LOGIN / SIGNUP)
+         ========================================================================== -->
+    <div class="auth-modal" id="auth-modal-container">
+        <div class="auth-container">
+            <div class="auth-content">
+                <div class="auth-header">
+                    <h3 class="auth-title" id="auth-modal-title">Sign In</h3>
+                    <button id="auth-close-btn" class="auth-close-btn" aria-label="Close Auth Modal"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Sign In</button>
+                    <button class="auth-tab" data-tab="signup">Create Account</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="auth-form-group">
+                        <label class="auth-label">Email Address</label>
+                        <input type="email" class="auth-input" id="login-email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-label">Password</label>
+                        <input type="password" class="auth-input" id="login-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full auth-submit" id="login-submit-btn">Sign In</button>
+                    <p id="login-error" class="auth-error-msg"></p>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="signup-form" class="auth-form" style="display: none;">
+                    <div class="auth-form-group">
+                        <label class="auth-label">Full Name</label>
+                        <input type="text" class="auth-input" id="signup-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-label">Email Address</label>
+                        <input type="email" class="auth-input" id="signup-email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-label">Password</label>
+                        <input type="password" class="auth-input" id="signup-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full auth-submit" id="signup-submit-btn">Create Account</button>
+                    <p id="signup-error" class="auth-error-msg"></p>
+                </form>
+
+                <!-- Logged In State (Hidden by default) -->
+                <div id="logged-in-view" class="auth-form" style="display: none; text-align: center; padding: 20px 0;">
+                    <div class="auth-user-icon"><i class="fa-solid fa-circle-user"></i></div>
+                    <h3 id="user-welcome-name" class="auth-welcome-name">Welcome back</h3>
+                    <p id="user-welcome-email" class="auth-welcome-email"></p>
+                    <button class="btn btn-secondary btn-full" id="logout-btn">Log Out</button>
+                </div>
             </div>
         </div>
     </div>
