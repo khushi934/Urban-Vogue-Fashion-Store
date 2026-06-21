@@ -368,6 +368,11 @@ app.post('/api/newsletter', async (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-    console.log(`Urban Vogue Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Urban Vogue Server running on http://localhost:${PORT}`);
+    });
+}
+
+// Export for Vercel serverless function
+module.exports = app;
