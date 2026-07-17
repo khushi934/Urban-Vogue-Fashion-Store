@@ -19,20 +19,7 @@
 </head>
 <body>
 
-    <!-- PASSWORD LOCKOUT GATEWAY -->
-    <div class="password-gateway-overlay" id="password-gateway">
-        <div class="password-gateway-box">
-            <h1 class="logo" style="font-size: 2.5rem; justify-content: center; margin-bottom: 8px;">URBAN<span>VOGUE</span></h1>
-            <p style="color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.75rem; margin-bottom: 32px;">Private Collection Review</p>
-            <form id="password-gateway-form" style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 320px; margin: 0 auto;">
-                <div>
-                    <input type="password" id="store-password-input" class="checkout-input" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #FFF; text-align: center; font-size: 1rem; letter-spacing: 0.2em; padding: 14px; width:100%; margin-bottom:10px; border-radius: var(--border-radius-sm);" placeholder="ENTER PASSWORD" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full" style="background-color: var(--color-accent); color: var(--color-primary);">Unlock Store</button>
-            </form>
-            <p style="font-size: 0.7rem; color: var(--color-text-muted); margin-top: 40px; text-transform: uppercase; letter-spacing: 0.05em;">Hint: Password is in your development brief</p>
-        </div>
-    </div>
+
 
     <!-- 1. ANNOUNCEMENT BAR WITH TIMER -->
     <div class="announcement-bar" id="announcement-bar">
@@ -516,8 +503,11 @@
                         <input type="email" class="auth-input" id="login-email" placeholder="name@example.com" required>
                     </div>
                     <div class="auth-form-group">
-                        <label class="auth-label">Password</label>
-                        <input type="password" class="auth-input" id="login-password" placeholder="••••••••" required>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label class="auth-label" style="margin-bottom: 0;">Password</label>
+                            <a href="#" class="forgot-password-link" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">Forgot Password?</a>
+                        </div>
+                        <input type="password" class="auth-input" id="login-password" placeholder="••••••••" required style="margin-top: 8px;">
                     </div>
                     <button type="submit" class="btn btn-primary btn-full auth-submit" id="login-submit-btn">Sign In</button>
                     <p id="login-error" class="auth-error-msg"></p>
@@ -534,11 +524,27 @@
                         <input type="email" class="auth-input" id="signup-email" placeholder="name@example.com" required>
                     </div>
                     <div class="auth-form-group">
-                        <label class="auth-label">Password</label>
-                        <input type="password" class="auth-input" id="signup-password" placeholder="••••••••" required>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label class="auth-label" style="margin-bottom: 0;">Password</label>
+                            <a href="#" class="forgot-password-link" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">Forgot Password?</a>
+                        </div>
+                        <input type="password" class="auth-input" id="signup-password" placeholder="••••••••" required style="margin-top: 8px;">
                     </div>
                     <button type="submit" class="btn btn-primary btn-full auth-submit" id="signup-submit-btn">Create Account</button>
                     <p id="signup-error" class="auth-error-msg"></p>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="forgot-password-form" class="auth-form" style="display: none;">
+                    <div class="auth-form-group">
+                        <label class="auth-label">Email Address</label>
+                        <input type="email" class="auth-input" id="forgot-password-email" placeholder="name@example.com" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full auth-submit" id="forgot-password-submit-btn">Reset Password</button>
+                    <p id="forgot-password-error" class="auth-error-msg"></p>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="#" id="back-to-login-link" style="font-size: 0.85rem; color: var(--color-text-muted); text-decoration: none;"><i class="fa-solid fa-arrow-left"></i> Back to Sign In</a>
+                    </div>
                 </form>
 
                 <!-- Logged In State (Hidden by default) -->
@@ -552,25 +558,6 @@
         </div>
     </div>
 
-    <!-- ==========================================================================
-         EMAIL NEWSLETTER POPUP (Triggers on delay / exit intent)
-         ========================================================================== -->
-    <div class="newsletter-popup" id="email-signup-popup">
-        <div class="popup-container">
-            <button class="popup-close-btn" id="popup-close-btn" aria-label="Close Newsletter Modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="popup-content">
-                <div class="popup-accent">JOIN THE INNER CIRCLE</div>
-                <h3 class="popup-title">UNLOCK 10% OFF</h3>
-                <p class="popup-desc">Subscribe today to receive exclusive early access to new capsule drops, private sales, and 10% off your first streetwear purchase.</p>
-                <form class="newsletter-form" id="popup-email-form">
-                    <input type="email" class="newsletter-input" id="popup-email-input" placeholder="Your email address" required>
-                    <button type="submit" class="btn btn-primary">Claim Discount</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <!-- Sticky Mobile Bottom ATC Bar (only active on Product Details page) -->
     <div class="sticky-atc-bar" id="mobile-sticky-atc-bar">

@@ -745,8 +745,7 @@ async function initApp() {
         return;
     }
 
-    // Initialise Password Lockout Gateway
-    initPasswordGateway();
+    // Initialise Password Lockout Gateway (Removed)
 
     // Check Auth State
     await checkAuth();
@@ -756,7 +755,6 @@ async function initApp() {
 
     // Initialise UI widgets & rendering
     initCountdownTimer();
-    initNewsletterPopup();
     bindHeaderEvents();
     renderBestsellers();
     renderSpotlight();
@@ -2487,37 +2485,7 @@ function showToast(message, type = "success") {
     }, 4000);
 }
 
-// PASSWORD GATEWAY CONTROLLER
-function initPasswordGateway() {
-    const gateway = document.getElementById('password-gateway');
-    const form = document.getElementById('password-gateway-form');
-    
-    if (!gateway) return;
 
-    // Check if already unlocked
-    if (SafeStorage.getItem('sessionStorage', 'uv_unlocked') === 'true') {
-        gateway.classList.add('hidden');
-        gateway.style.display = 'none';
-    } else {
-        gateway.classList.remove('hidden');
-        gateway.style.display = 'flex';
-    }
-
-    form.onsubmit = (e) => {
-        e.preventDefault();
-        const pwd = document.getElementById('store-password-input').value;
-        if (pwd === 'Test@123') {
-            SafeStorage.setItem('sessionStorage', 'uv_unlocked', 'true');
-            gateway.classList.add('hidden');
-            setTimeout(() => {
-                gateway.style.display = 'none';
-            }, 500); // Wait for the transition to finish
-            showToast("Welcome to Urban Vogue! Store Unlocked.", "success");
-        } else {
-            showToast("Incorrect password. Please try again.", "error");
-        }
-    };
-}
 
 // TRACK ORDER PAGE VIEW
 function renderTrackOrderPage() {
@@ -2715,6 +2683,9 @@ function bindAuthEvents() {
     const signupForm = document.getElementById('signup-form');
     const loggedInView = document.getElementById('logged-in-view');
     const authModalTitle = document.getElementById('auth-modal-title');
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+    const forgotPasswordLinks = document.querySelectorAll('.forgot-password-link');
+    const backToLoginLink = document.getElementById('back-to-login-link');
 
     if (authToggleBtn && authModal) {
         authToggleBtn.addEventListener('click', () => {
@@ -2722,6 +2693,7 @@ function bindAuthEvents() {
             if (state.user) {
                 loginForm.style.display = 'none';
                 signupForm.style.display = 'none';
+                if (forgotPasswordForm) forgotPasswordForm.style.display = 'none';
                 document.querySelector('.auth-tabs').style.display = 'none';
                 loggedInView.style.display = 'block';
                 document.getElementById('user-welcome-name').textContent = `Welcome, ${state.user.name}`;
@@ -2730,6 +2702,7 @@ function bindAuthEvents() {
             } else {
                 loginForm.style.display = 'block';
                 signupForm.style.display = 'none';
+                if (forgotPasswordForm) forgotPasswordForm.style.display = 'none';
                 document.querySelector('.auth-tabs').style.display = 'flex';
                 loggedInView.style.display = 'none';
                 authModalTitle.textContent = 'Sign In';
@@ -2756,6 +2729,8 @@ function bindAuthEvents() {
             tab.classList.add('active');
             tab.style.color = 'var(--color-secondary)';
             tab.style.borderBottom = '2px solid var(--color-accent)';
+
+            if (forgotPasswordForm) forgotPasswordForm.style.display = 'none';
 
             if (tab.dataset.tab === 'login') {
                 loginForm.style.display = 'block';
@@ -2857,6 +2832,82 @@ function bindAuthEvents() {
                 errorEl.style.display = 'block';
             } finally {
                 submitBtn.textContent = 'Create Account';
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    if (forgotPasswordLinks.length > 0 && forgotPasswordForm) {
+        forgotPasswordLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'none';
+                forgotPasswordForm.style.display = 'block';
+                document.querySelector('.auth-tabs').style.display = 'none';
+                authModalTitle.textContent = 'Reset Password';
+            });
+        });
+    }
+
+    if (backToLoginLink && loginForm) {
+        backToLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotPasswordForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            document.querySelector('.auth-tabs').style.display = 'flex';
+            authModalTitle.textContent = 'Sign In';
+            
+            authTabs.forEach(t => {
+                t.classList.remove('active');
+                t.style.color = 'var(--color-text-muted)';
+                t.style.borderBottom = 'none';
+                if (t.dataset.tab === 'login') {
+                    t.classList.add('active');
+                    t.style.color = 'var(--color-secondary)';
+                    t.style.borderBottom = '2px solid var(--color-accent)';
+                }
+            });
+        });
+    }
+
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgot-password-email').value;
+            const errorEl = document.getElementById('forgot-password-error');
+            const submitBtn = document.getElementById('forgot-password-submit-btn');
+
+            errorEl.style.display = 'none';
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/forgot-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                let data = {};
+                try {
+                    data = await res.json();
+                } catch(e) {
+                    throw new Error('Backend API unavailable.');
+                }
+                
+                if (res.ok) {
+                    showToast(data.message || 'Password reset link sent to email', 'success');
+                    forgotPasswordForm.reset();
+                    if (backToLoginLink) backToLoginLink.click();
+                } else {
+                    errorEl.textContent = data.error || 'Failed to send reset link';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'An error occurred. Please try again.';
+                errorEl.style.display = 'block';
+            } finally {
+                submitBtn.textContent = 'Reset Password';
                 submitBtn.disabled = false;
             }
         });
