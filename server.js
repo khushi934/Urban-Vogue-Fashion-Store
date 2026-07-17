@@ -844,14 +844,21 @@ app.post('/api/forgot-password', async (req, res) => {
 
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
-                console.error('Error sending email: ', err);
-                // We don't fail the request to not leak user existence, but we log the error
+                console.error('\n=============================================');
+                console.error('DEVELOPMENT MODE: EMAIL FAILED TO SEND!');
+                console.error('Reason: EMAIL_USER and EMAIL_PASS are not configured in .env');
+                console.error('Password Reset Link: ', resetUrl);
+                console.error('=============================================\n');
             } else {
                 console.log('Reset email sent: ' + info.response);
             }
         });
 
-        res.json({ message: 'If an account exists, a password reset link will be sent.' });
+        // For local testing without a real email server, return the link in the response
+        res.json({ 
+            message: 'If an account exists, a password reset link will be sent.',
+            devResetUrl: (!process.env.EMAIL_PASS || process.env.EMAIL_PASS === 'dummy_password') ? resetUrl : undefined
+        });
     } catch (error) {
         console.error('Forgot password error: ', error);
         res.status(500).json({ error: 'Database error' });

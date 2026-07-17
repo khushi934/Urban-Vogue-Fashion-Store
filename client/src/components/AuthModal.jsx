@@ -62,7 +62,16 @@ function AuthModal({ onClose, onLoginSuccess }) {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage(data.message || 'If an account exists, a password reset link will be sent.');
+        if (data.devResetUrl) {
+          setMessage(
+            <span>
+              {data.message}<br/><br/>
+              <strong style={{color: '#ff5722'}}>Dev Mode:</strong> <a href={data.devResetUrl} style={{color: '#2874f0', textDecoration: 'underline'}}>Click here to reset password</a>
+            </span>
+          );
+        } else {
+          setMessage(data.message || 'If an account exists, a password reset link will be sent.');
+        }
       } else {
         setError(data.error || 'Failed to request reset');
       }
